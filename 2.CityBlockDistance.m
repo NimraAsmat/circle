@@ -1,26 +1,23 @@
-% Create a 100x100 binary image
+% Initialize a 100x100 matrix of zeros
 A = zeros(100, 100);
 
-% Define the center of the circle
-center_x = 50; % x-coordinate of the center
-center_y = 50; % y-coordinate of the center
-radius = 20;   % Radius of the circle
+% Circle parameters
+Cx = 50;     % x-coordinate of the circle center
+Cy = 50;     % y-coordinate of the circle center
+Radius = 20; % Radius of the circle
 
-% Loop through each pixel in the image
-for x = 1:100
-    for y = 1:100
-        % Calculate the City Block Distance from the center
-        D_cityblock = abs(x - center_x) + abs(y - center_y);
+% Loop through each element in the matrix
+for i = 1:1:100
+    for j = 1:1:100
+        % Calculate the city block (Manhattan) distance
+        distance = abs(i - Cx) + abs(j - Cy);
         
-        % If the distance is equal to the radius, mark it as part of the circle
-        if D_cityblock == radius
-            A(x, y) = 1; % Set the pixel value to 1 (white)
+        % Check if the point lies within the radius
+        if distance <= Radius
+            A(i, j) = 255; % Set the value to 255 if inside the "circle"
         end
     end
 end
 
-% Display the resulting circle
-imshow(A, 'InitialMagnification', 'fit');
-title('Circle using City Block Distance');
-
-
+% Display the matrix as an image
+imshow(A, []);
