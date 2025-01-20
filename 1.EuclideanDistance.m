@@ -22,9 +22,6 @@ for i = 1:100 % Loop over rows (y-coordinates)
 end
 
 % Display the image
-imshow(A);
-title('Circle drawn using Euclidean distance');
+imshow(A,[]);
 
-% Save the output image
-imwrite(A, 'circle_output.png');
 
