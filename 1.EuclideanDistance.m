@@ -1,27 +1,21 @@
-% Initialize a 100x100 black image
+% Initialize a 100x100 matrix of zeros
 A = zeros(100, 100);
 
-% Center of the circle
-centerX = 50; % x-coordinate of the center
-centerY = 50; % y-coordinate of the center
+% Circle parameters
+Cx = 50;     % x-coordinate of the circle center
+Cy = 50;     % y-coordinate of the circle center
+Radius = 20; % Radius of the circle
 
-% Radius of the circle
-radius = 20;
-
-% Loop through each pixel in the image
-for i = 1:100 % Loop over rows (y-coordinates)
-    for j = 1:100 % Loop over columns (x-coordinates)
-        % Calculate Euclidean distance from the center
-        distance = sqrt((i - centerY)^2 + (j - centerX)^2);
-        
-        % If the distance is approximately equal to the radius, mark it
-        if abs(distance - radius) < 0.5
-            A(i, j) = 1; % Set the pixel to white
+% Loop through each element in the matrix
+for i = 1:1:100
+    for j = 1:1:100
+        % Check if the point (i, j) lies within the circle
+        if sqrt((i - Cx)^2 + (j - Cy)^2) <= Radius
+            A(i, j) = 255; % Set the value to 255 if inside the circle
         end
     end
 end
 
-% Display the image
-imshow(A,[]);
-
-
+% Display the matrix as an image
+imshow(A, []);
+ 
